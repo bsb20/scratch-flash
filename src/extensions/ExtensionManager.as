@@ -52,6 +52,7 @@ public class ExtensionManager {
 	static public const picoBoardExt:String = 'PicoBoard';
 	static public const wedoExt:String = 'LEGO WeDo';
 	static public const wedo2Ext:String = 'LEGO WeDo 2.0';
+	static public const lightPlay:String = 'Light Play 1.0';
 
 	public function ExtensionManager(app:Scratch) {
 		this.app = app;
@@ -77,6 +78,7 @@ public class ExtensionManager {
 		extensionDict[picoBoardExt] = ScratchExtension.PicoBoard();
 		extensionDict[wedoExt] = ScratchExtension.WeDo();
 		extensionDict[wedo2Ext] = ScratchExtension.WeDo2();
+		extensionDict[lightPlay] = ScratchExtension.LightPlay();
 	}
 
 	// -----------------------------

@@ -326,11 +326,12 @@ spriteFeaturesFilter.visible = false; // disable features filter for now
 
 
 	protected function addScratchExtensions():void {
-		const extList:Array = [
-			ScratchExtension.PicoBoard(),
-			ScratchExtension.WeDo(),
-			ScratchExtension.WeDo2()
-		];
+		var extList:Vector.<ScratchExtension> = new Vector.<ScratchExtension>();
+		for each(var staticMember:XML in describeType(ScratchExtension).children()){
+			if(staticMember.name() == "method"){
+				extList.push(ScratchExtension[staticMember.attribute("name")]());
+			}
+		}
 		allItems = [];
 		for each (var ext:ScratchExtension in extList) {
 			allItems.push(new MediaLibraryItem({
