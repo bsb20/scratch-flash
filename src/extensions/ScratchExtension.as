@@ -111,5 +111,27 @@ public class ScratchExtension {
 		result.tags = ['hardware'];
 		return result;
 	}
+	
+    public static function LightPlay():ScratchExtension {
+		// Return a descriptor for the LEGO WeDo 2.0 extension.
+		var result:ScratchExtension = new ScratchExtension(ExtensionManager.lightPlay, 0);
+		result.isInternal = true;
+		result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('lightplayExtension.js');
+		result.thumbnailMD5 = 'f20bd801dbeb1359f6f384fd942d9314.png';
+		result.url = 'http://wiki.scratch.mit.edu/wiki/LEGO_WeDo2_Blocks'; // TODO
+		result.tags = ['hardware'];
+		return result;
+	}
+
+	public static function Midi():ScratchExtension {
+		// Return a descriptor for the LEGO WeDo 2.0 extension.
+		var result:ScratchExtension = new ScratchExtension(ExtensionManager.midi, 0);
+		result.isInternal = true;
+		result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('midiExtension.js');
+		result.thumbnailMD5 = 'f20bd801dbeb1359f6f384fd942d9314.png';
+		result.url = 'http://wiki.scratch.mit.edu/wiki/LEGO_WeDo2_Blocks'; // TODO
+		result.tags = ['hardware'];
+		return result;
+	}
 }
 }
