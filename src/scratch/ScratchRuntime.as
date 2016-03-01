@@ -654,6 +654,7 @@ public class ScratchRuntime {
 
 	// hats whose triggering condition is currently true
 	protected var activeHats:Array = [];
+	protected var waitingHats:Array = []
 	protected function startEdgeTriggeredHats(hat:Block, target:ScratchObj):void {
 		if (!hat.isHat || !hat.nextBlock) return; // skip disconnected hats
 
@@ -709,15 +710,30 @@ public class ScratchRuntime {
 		}
 		else{
 			//Tell the block to wait like a reporter, fire if true
-			if(hat.requestState == 0){
-				if(!interp.isRunning(hat, target)){
-					interp.toggleThread(hat, target, 0, true);
-				}
-			}
-			if(triggeredHats.indexOf(hat) >= 0){
-				activeHats.push(hat);
+			if(triggeredHats.indexOf(hat) == -1 && waitingHats.indexOf(hat) < 0 && !interp.isRunning(hat, target)){
+				interp.toggleThread(hat, target, 0, true);
+				waitingHats.push(hat);
+				app.extensionManager.primExtensionOp(hat);
 			}
 		}
+	}
+
+	public function waitingHatFired(hat:Block, willExec:Boolean):void{
+		if(isWaitingHat(hat)){
+			waitingHats.splice(waitingHats.indexOf(hat), 1);
+		}
+		if(willExec){
+			hat.showRunFeedback();
+			activeHats.push(hat);
+		}
+		else{
+			//if it didn't fire, the thread is over!
+			interp.activeThread.stop();
+		}
+	}
+
+	public function isWaitingHat(hat:Block):Boolean{
+		return hat.isHat && hat.hasPredicate && waitingHats.indexOf(hat) >= 0;
 	}
 
 	public function waitingHatFired(hat:Block, willExec:Boolean):Boolean{

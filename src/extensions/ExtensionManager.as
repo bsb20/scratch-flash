@@ -386,30 +386,22 @@ public class ExtensionManager {
 		}
 
 		var value:*;
-		if(b.isHat && b.isAsyncHat){
+		if(b.isHat && b.hasPredicate){
 			if(b.requestState == 0){
 				request(extName, primOrVarName, args, b);
-				app.interp.doYield();
 				return null;
 			}
-			else if(b.requestState == 2){
+			else if(b.requestState == 2 && b.response as Object){
+				var responseObj:Object = b.response as Object;
+				args.push(responseObj);
 				b.requestState = 0;
-				if(b.forcedRequester){
-					value = b.response as Boolean;
-				}
-				else{
-					var responseObj:Object = b.response as Object;
-					args.push(responseObj);
-					if(responseObj && responseObj.hasOwnProperty('predicate')){
-						app.externalCall('ScratchExtensions.getReporter', function(v:*):void {
-							value = v;
-						}, ext.name, responseObj.predicate, args);
-					}
+				if(responseObj.hasOwnProperty('predicate')){
+					app.externalCall('ScratchExtensions.getReporter', function(v:*):void {
+						value = v;
+					}, ext.name, responseObj.predicate, args);
 				}
 				if(value){
-					if(!app.runtime.waitingHatFired(b, true)){
-						app.interp.doYield();
-					}
+					app.runtime.waitingHatFired(b, true);
 				}
 				else{
 					app.interp.doYield();
