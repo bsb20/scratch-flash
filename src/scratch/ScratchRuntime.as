@@ -733,7 +733,7 @@ public class ScratchRuntime {
 	}
 
 	public function isWaitingHat(hat:Block):Boolean{
-		return hat.isHat && hat.hasPredicate && waitingHats.indexOf(hat) >= 0;
+		return hat.isHat && hat.isAsyncHat && waitingHats.indexOf(hat) >= 0;
 	}
 
 	public function waitingHatFired(hat:Block, willExec:Boolean):Boolean{
