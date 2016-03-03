@@ -643,7 +643,6 @@ public class ScratchRuntime {
 
 	// hats whose triggering condition is currently true
 	protected var activeHats:Array = [];
-	protected var waitingHats:Array = []
 	protected function startEdgeTriggeredHats(hat:Block, target:ScratchObj):void {
 		if (!hat.isHat || !hat.nextBlock) return; // skip disconnected hats
 
@@ -727,7 +726,8 @@ public class ScratchRuntime {
 			triggeredHats.splice(triggeredHats.indexOf(hat), 1);
 		}
 		return false;
-	}
+	
+    }
 
 	private function processEdgeTriggeredHats():void {
 		if (!edgeTriggersEnabled) return;
