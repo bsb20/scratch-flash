@@ -785,6 +785,7 @@ public class Block extends Sprite {
 			if (argSpec == "m") return new BlockArg("m", c, false, s.slice(3));
 			if (argSpec == "n") return new BlockArg("n", c, true);
 			if (argSpec == "s") return new BlockArg("s", c, true);
+			if (argSpec == "g") return new BlockArg("g", c);
 		} else if (s.length >= 2 && s.charAt(0) == "@") { // icon spec
 			var icon:* = Specs.IconNamed(s.slice(1));
 			return (icon) ? icon : makeLabel(s);

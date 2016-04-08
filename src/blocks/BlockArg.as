@@ -99,6 +99,11 @@ public class BlockArg extends Sprite {
 			argValue = 0;
 		} else if (type == 's') {
 			base = new BlockShape(BlockShape.RectShape, c);
+		}
+		  else if (type == 'g'){
+			base = new BlockShape(BlockShape.RectShape, c);
+			this.menuName = 'gridEditor';
+			addEventListener(MouseEvent.MOUSE_DOWN, invokeMenu);
 		} else {
 			// custom type; subclass is responsible for adding
 			// the desired children, setting width and height,
@@ -115,7 +120,7 @@ public class BlockArg extends Sprite {
 		base.filters = blockArgFilters();
 		addChild(base);
 
-		if ((type == 'd') || (type == 'm')) { // add a menu icon
+		if ((type == 'd') || (type == 'm') || (type == 'g')) { // add a menu icon
 			menuIcon = new Shape();
 			var g:Graphics = menuIcon.graphics;
 			g.beginFill(0, 0.6); // darker version of base color

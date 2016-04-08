@@ -76,6 +76,7 @@ public class BlockMenus implements DragClient {
 		if (menuName == 'direction') menuHandler.dirMenu(evt);
 		if (menuName == 'drum') menuHandler.drumMenu(evt);
 		if (menuName == 'effect') menuHandler.effectMenu(evt);
+		if (menuName == 'gridEditor') menuHandler.gridEditor(evt);
 		if (menuName == 'instrument') menuHandler.instrumentMenu(evt);
 		if (menuName == 'key') menuHandler.keyMenu(evt);
 		if (menuName == 'list') menuHandler.listMenu(evt);
@@ -287,6 +288,15 @@ public class BlockMenus implements DragClient {
 		if (app.viewedObj() == null) return;
 		for each (var s:String in FilterPack.filterNames) m.addItem(s);
 		showMenu(m);
+	}
+
+	private function gridEditor(evt:MouseEvent):void{
+		function gridCallback(grid:String):void{
+			setBlockArg(grid);
+		}
+		var grid:GridEditor = new GridEditor(gridCallback, blockArg.argValue);
+		var p:Point = blockArg.localToGlobal(new Point(0, blockArg.height));
+		grid.showOnStage(app.stage, int(p.x) , p.y + 1);
 	}
 
 	private function extensionMenu(evt:MouseEvent, menuName:String):Boolean {
