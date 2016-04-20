@@ -123,6 +123,46 @@ public class ScratchExtension {
 		return result;
 	}
 
+	public static function Turntable():ScratchExtension{
+		var result:ScratchExtension = new ScratchExtension(ExtensionManager.turntable, 0);
+		result.isInternal = true;
+		result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('turntableExtension.js');
+		result.thumbnailMD5 = 'f20bd801dbeb1359f6f384fd942d9314.png';
+		result.url = 'http://www.zombo.com'; // TODO
+		result.tags = ['hardware'];
+		return result;
+	}
+
+	public static function Motor():ScratchExtension{
+		var result:ScratchExtension = new ScratchExtension(ExtensionManager.motor, 0);
+		result.isInternal = true;
+		result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('motorExtension.js');
+		result.thumbnailMD5 = 'f20bd801dbeb1359f6f384fd942d9314.png';
+		result.url = 'http://www.zombo.com'; // TODO
+		result.tags = ['hardware'];
+		return result;
+	}
+
+	public static function Grid():ScratchExtension{
+		var result:ScratchExtension = new ScratchExtension(ExtensionManager.grid, 0);
+		result.isInternal = true;
+		result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('gridExtension.js');
+		result.thumbnailMD5 = 'f20bd801dbeb1359f6f384fd942d9314.png';
+		result.url = 'http://www.zombo.com'; // TODO
+		result.tags = ['hardware'];
+		return result;
+	}
+
+	public static function Speaker():ScratchExtension{
+		var result:ScratchExtension = new ScratchExtension(ExtensionManager.speaker, 0);
+		result.isInternal = true;
+		result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('speakerExtension.js');
+		result.thumbnailMD5 = 'f20bd801dbeb1359f6f384fd942d9314.png';
+		result.url = 'http://www.zombo.com'; // TODO
+		result.tags = ['hardware'];
+		return result;
+	}
+
 	public static function Midi():ScratchExtension {
 		// Return a descriptor for the LEGO WeDo 2.0 extension.
 		var result:ScratchExtension = new ScratchExtension(ExtensionManager.midi, 0);
@@ -133,5 +173,18 @@ public class ScratchExtension {
 		result.tags = ['hardware'];
 		return result;
 	}
+
+	public static function Arduino():ScratchExtension {
+		// Return a descriptor for the LEGO WeDo 2.0 extension.
+		var result:ScratchExtension = new ScratchExtension(ExtensionManager.arduino, 0);
+		result.isInternal = true;
+		result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('arduinoExtension.js');
+		result.thumbnailMD5 = 'f20bd801dbeb1359f6f384fd942d9314.png';
+		result.url = 'http://wiki.scratch.mit.edu/wiki/LEGO_WeDo2_Blocks'; // TODO
+		result.tags = ['hardware'];
+		return result;
+	}
+
+
 }
 }

@@ -52,8 +52,13 @@ public class ExtensionManager {
 	static public const picoBoardExt:String = 'PicoBoard';
 	static public const wedoExt:String = 'LEGO WeDo';
 	static public const wedo2Ext:String = 'LEGO WeDo 2.0';
+	static public const turntable:String = "Turntable";
+	static public const grid:String = "Grid";
+	static public const speaker:String = "Speaker";
+	static public const motor:String = "Motor";
 	static public const lightPlay:String = 'Lightplay 1';
 	static public const midi:String = 'Midi Device';
+	static public const arduino:String = 'Arduino 101';
 
 	public function ExtensionManager(app:Scratch) {
 		this.app = app;
@@ -81,7 +86,14 @@ public class ExtensionManager {
 		extensionDict[wedo2Ext] = ScratchExtension.WeDo2();
 		extensionDict[lightPlay] = ScratchExtension.LightPlay();
 		extensionDict[midi] = ScratchExtension.Midi();
+		extensionDict[turntable] = ScratchExtension.Turntable();
+		extensionDict[grid] = ScratchExtension.Grid();
+		extensionDict[motor] = ScratchExtension.Motor();
+		extensionDict[speaker] = ScratchExtension.Speaker();
+		extensionDict[arduino] = ScratchExtension.Arduino();
 	}
+
+
 
 	// -----------------------------
 	// Block Specifications
