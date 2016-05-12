@@ -185,6 +185,18 @@ public class ScratchExtension {
 		return result;
 	}
 
+	public static function LightplayController():ScratchExtension {
+		// Return a descriptor for the LEGO WeDo 2.0 extension.
+		var result:ScratchExtension = new ScratchExtension(ExtensionManager.lightPlayController, 0);
+		result.isInternal = true;
+		result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('lightplayControllerExtension.js');
+		result.thumbnailMD5 = 'f20bd801dbeb1359f6f384fd942d9314.png';
+		result.url = 'http://wiki.scratch.mit.edu/wiki/LEGO_WeDo2_Blocks'; // TODO
+		result.tags = ['hardware'];
+		return result;
+	}
+
+
 
 }
 }

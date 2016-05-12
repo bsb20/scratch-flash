@@ -59,6 +59,7 @@ public class ExtensionManager {
 	static public const lightPlay:String = 'Lightplay 1';
 	static public const midi:String = 'Midi Device';
 	static public const arduino:String = 'Arduino 101';
+	static public const lightPlayController:String = 'Lightplay Controller';
 
 	public function ExtensionManager(app:Scratch) {
 		this.app = app;
@@ -91,6 +92,7 @@ public class ExtensionManager {
 		extensionDict[motor] = ScratchExtension.Motor();
 		extensionDict[speaker] = ScratchExtension.Speaker();
 		extensionDict[arduino] = ScratchExtension.Arduino();
+		extensionDict[lightPlayController] = ScratchExtension.LightplayController();
 	}
 
 
